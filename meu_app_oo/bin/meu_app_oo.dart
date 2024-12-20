@@ -6,15 +6,21 @@ void main(List<String> arguments) {
 
   print("Insira o seu nome: ");
   String? nome = stdin.readLineSync();
-  
+
   print("Insira o seu peso: ");
-  String? peso = stdin.readLineSync();
+  String? pesoStr = stdin.readLineSync();
+  double? peso = double.tryParse(pesoStr ?? "");
 
   print("Insira a sua altura: ");
-  String? altura = stdin.readLineSync();
+  String? alturaStr = stdin.readLineSync();
+  double? altura = double.tryParse(alturaStr ?? "");
 
-  //IMC
-  print("Nome: ${p1.getNome()}");
-  print("IMC: ${p1.IMC()}");
+  if (nome != null && peso != null && altura != null) {
+    p1.setInfo(nome, peso, altura);
 
+    print("Nome: ${p1.getNome()}");
+    print("IMC: ${p1.IMC().toStringAsFixed(2)}");
+  } else {
+    print("Dados inválidos! Por favor, insira os valores corretamente.");
+  }
 }

@@ -1,21 +1,21 @@
 class Info {
-  String _nome = "";
-  double _peso = 0.0;
-  double _altura = 0.0;
-  void setNome(String nome) {
-    _nome = nome;
-  }
-  void setPeso(String peso) {
-    _peso = double.parse(peso);
-  }
-  void setAltura(String altura) {
-    _altura = double.parse(altura);
+  String? nome;
+  double? peso;
+  double? altura;
+
+  void setInfo(String nome, double peso, double altura) {
+    this.nome = nome;
+    this.peso = peso;
+    this.altura = altura;
   }
 
-  String getNome() {
-    return _nome;
-  }
+  String getNome() => nome ?? "Nome não definido";
+
   double IMC() {
-     return _peso / (_altura * _altura);
+    if (peso != null && altura != null && altura! > 0) {
+      return peso! / (altura! * altura!);
+    } else {
+      return 0.0;
+    }
   }
 }
